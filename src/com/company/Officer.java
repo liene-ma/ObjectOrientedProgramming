@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.Scanner;
-
 public class Officer {
 
     private String name;
@@ -20,7 +18,6 @@ public class Officer {
 
     public Officer() {
     }
-
 
     public String getName() {
         return name;
@@ -67,10 +64,10 @@ public class Officer {
         if (crimesSolved <= 20) {
             return 1;
         }
-        if (crimesSolved > 20 && crimesSolved < 40) {
+        if (crimesSolved > 20 && crimesSolved <= 40) {
             return 2;
         }
-        if (crimesSolved >= 40) {
+        if (crimesSolved > 40) {
             return 3;
         }
         return calculatedLevel();

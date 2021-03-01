@@ -9,7 +9,6 @@ public class PoliceStation {
 
     public static void main(String[] args) {
 
-
         Officer officer1 = new Officer("Jessica", "Jones", 22876, "District1", 27);
         Officer officer2 = new Officer("Sam", "Spade", 22890, "District1", 75);
         Officer officer3 = new Officer("Will", "Graham", 21711, "District9", 35);
@@ -22,7 +21,6 @@ public class PoliceStation {
         officer6.setOfficerID(21917);
         officer6.setWorkingDistrict("Center");
         officer6.setCrimesSolved(16);
-
 
         System.out.println(officer1.toString());
         System.out.println(officer2.toString());
@@ -39,20 +37,56 @@ public class PoliceStation {
         district99.add(officer5);
         district99.add(officer6);
 
+        int countOfFirstLevel = 0;
+        int countOfMoreThanFirstLevel = 0;
+        int countOfJohn = 0;
 
-//c. Find out how many Officers are with level 1 in the District99.
-        int count = 0;
         for(Officer officer : district99) {
             if(officer.calculatedLevel() == 1) {
-                count++;
+                countOfFirstLevel++;
             }
-            System.out.println(count);
+
+            if(officer.calculatedLevel() > 1) {
+                countOfMoreThanFirstLevel++;
+            }
+
+            if(officer.getName().equals("John")) {
+                countOfJohn++;
+            }
         }
 
+        System.out.println("John: "+ countOfJohn);
+        System.out.println("Count of First Level: " + countOfFirstLevel);
+        System.out.println("Count of More Than First level: " + countOfMoreThanFirstLevel);
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter name");
+        String name = input.nextLine();
+        System.out.println("Enter surname");
+        String surname = input.nextLine();
+        System.out.println("Enter OfficerID");
+        int officerID = input.nextInt();
+        System.out.println("Enter working district");
+        String workingDistrict = input.nextLine();
+
+        System.out.println("How many crimes solved?");
+        int crimesSolved = input.nextInt();
 
 
-//d. Find out how many Officers are with the level which is larger than 1 in the District99.
-//e. Find out if there is any Officer with the name “John”.
+        Officer officer;
+        for(int i =0; i<1; i++)
+        {
+            officer = new Officer();
+            officer.setName(name);
+            officer.setSurname(surname);
+            officer.setOfficerID(officerID);
+            officer.setWorkingDistrict(workingDistrict);
+            officer.setCrimesSolved(crimesSolved);
+
+            district99.add(officer);
+
+        }
+        System.out.println(district99.get(6));
 
 
 
