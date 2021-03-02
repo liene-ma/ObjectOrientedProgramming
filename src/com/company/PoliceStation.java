@@ -1,15 +1,13 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class PoliceStation {
 
     public static void main(String[] args) {
 
-        Officer officer1 = new Officer("Jessica", "Jones", 22876, "District1", 27);
+        Officer officer1 = new Officer("Mike", "Lowrey", 22876, "District1", 27);
         Officer officer2 = new Officer("Sam", "Spade", 22890, "District1", 75);
         Officer officer3 = new Officer("Will", "Graham", 21711, "District9", 35);
         Officer officer4 = new Officer("Clarice", "Starling", 28122, "District5", 88);
@@ -29,6 +27,7 @@ public class PoliceStation {
         System.out.println(officer5.toString());
         System.out.println(officer6.toString());
 
+
         ArrayList<Officer> district99 = new ArrayList<>();
         district99.add(officer1);
         district99.add(officer2);
@@ -41,60 +40,67 @@ public class PoliceStation {
         int countOfMoreThanFirstLevel = 0;
         int countOfJohn = 0;
 
-        for(Officer officer : district99) {
-            if(officer.calculatedLevel() == 1) {
+        for (Officer officer : district99) {
+            if (officer.calculatedLevel() == 1) {
                 countOfFirstLevel++;
             }
 
-            if(officer.calculatedLevel() > 1) {
+            if (officer.calculatedLevel() > 1) {
                 countOfMoreThanFirstLevel++;
             }
 
-            if(officer.getName().equals("John")) {
+            if (officer.getName().contains("John")) {
                 countOfJohn++;
             }
         }
-
-        System.out.println("John: "+ countOfJohn);
+        System.out.println("John: " + countOfJohn);
         System.out.println("Count of First Level: " + countOfFirstLevel);
         System.out.println("Count of More Than First level: " + countOfMoreThanFirstLevel);
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter name");
-        String name = input.nextLine();
-        System.out.println("Enter surname");
-        String surname = input.nextLine();
-        System.out.println("Enter OfficerID");
-        int officerID = input.nextInt();
-        System.out.println("Enter working district");
-        String workingDistrict = input.nextLine();
-
-        System.out.println("How many crimes solved?");
-        int crimesSolved = input.nextInt();
-
-
+        char choice;
         Officer officer;
-        for(int i =0; i<1; i++)
+
+        do
         {
+
             officer = new Officer();
-            officer.setName(name);
-            officer.setSurname(surname);
-            officer.setOfficerID(officerID);
-            officer.setWorkingDistrict(workingDistrict);
-            officer.setCrimesSolved(crimesSolved);
+
+            System.out.println("Enter name");
+            officer.setName(input.nextLine());
+            System.out.println("Enter surname");
+            officer.setSurname(input.nextLine());
+            System.out.println("Enter OfficerID");
+            officer.setOfficerID(input.nextInt());
+            input.nextLine();
+            System.out.println("Enter working district");
+            officer.setWorkingDistrict(input.nextLine());
+            System.out.println("How many crimes solved?");
+            officer.setCrimesSolved(input.nextInt());
+            input.nextLine();
 
             district99.add(officer);
 
+            System.out.print("Add another? Enter Y for yes N for no: ");
+            choice = input.next().charAt(0);
+            input.nextLine();
+
         }
-        System.out.println(district99.get(6));
+        while ((choice == 'y') || (choice == 'Y'));
 
 
+        for (Officer off : district99)
+        {
+            System.out.println(off.toString());
+        }
 
+//        Iterator itr = district99.iterator();
+//        while (itr.hasNext()) {
+//            System.out.println(itr.next());
+//        }
 //        System.out.println(officer5.getName());
 //        System.out.println(officer5.calculatedLevel());
 //        System.out.println(officer2.calculatedLevel());
 //        System.out.println(officer2.toString());
-
-
     }
 }
